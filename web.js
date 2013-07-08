@@ -7,7 +7,7 @@ var app = express.createServer(express.logger());
 var indexFile;
 fs.readFile('index.html', function (err, data) {
     if (err) throw err;
-    indexFile = Buffer.toString(data);
+    indexFile = data.toString();
 });
 
 app.get('/', function(request, response) {
