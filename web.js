@@ -2,7 +2,11 @@ var express = require('express');
 
 var app = express.createServer(express.logger());
 
-var indexFile = fs.readFileSync('index.html');
+var indexFile;
+fs.readFile('index.html', {encoding="ascii"}, function (err, data) {
+    if (err) throw err;
+    indexFile = data;
+});
 
 app.get('/', function(request, response) {
   response.send(indexFile);
